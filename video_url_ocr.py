@@ -22,7 +22,7 @@ def video_to_image(vid,num):
     '''
 
     # create a folder with the same name as video
-    my_image_path = 'C:\\video_images'
+    my_image_path = 'Path-to-images-folder'
     path, file_name = os.path.split(vid)
     folder = join(my_image_path , file_name)
     os.makedirs(folder)
@@ -55,8 +55,8 @@ for file in onlyfiles:
 
 
 ###### crop images base on the browser ancher to get url area in each folder #######
-path_to_anchor1 = 'C:\\Users\\mh4pk\\Downloads\\temp.jpg'
-path_to_anchor2 = 'C:\\Users\\mh4pk\\Downloads\\onion_vid.jpg'
+path_to_anchor1 = '/path-to-chrome-anchor-template'
+path_to_anchor2 = '/path-to-tor-anchor-template'
 def AOI(img, path_to_anchor1, path_to_anchor2):
     '''
     Uses  openCV TM_CCOEFF_NORMED algorithm to match anchors for text area on top of browser
@@ -107,7 +107,7 @@ def AOI(img, path_to_anchor1, path_to_anchor2):
         AOI_window_T = img[max_loc_T[0] - 1:max_loc_T[0] + hight, 0:50]
         is_tor = False
     return AOI_window_G, AOI_window_T, is_chrome, is_tor
-    # can write any of these image cropped in a file instead of returning ex: cv2.imwrite('C:\\Users\\Moji\\Desktop\\last2.png', AOI_window)
+    
 
 def sharpen(img):
     '''
@@ -237,6 +237,7 @@ def screenshots_to_csv(screenshots_path):
     :return: None
     '''
     general_path, directory = os.path.split(screenshots_path)
+	#create a path for cropped images folders and to save the cvs file
     crop_path = 'C:\\cropped\\' + directory + '_cropped'
 
     onlyfiles = [join(screenshots_path, f) for f in listdir(screenshots_path) if isfile(join(screenshots_path, f))]
@@ -296,4 +297,5 @@ for file in listdir(image_folder_path):
 
     '''
 ###########
-screenshots_to_csv('C:\\video_images\\AEA014_2018-04-16 09-19-22.flv')
+#replace this with appropriate path to the video file
+screenshots_to_csv('C:\\video_images\\video.flv')

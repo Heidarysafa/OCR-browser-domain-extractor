@@ -1,0 +1,1 @@
+# OCR browser domain extractor
